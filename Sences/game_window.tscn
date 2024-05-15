@@ -1,0 +1,135 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6f62k8x1ksc0"]
+
+[ext_resource type="Texture2D" uid="uid://b38jqyrrk3ne5" path="res://art/background 2.png" id="1_k2sba"]
+[ext_resource type="PackedScene" uid="uid://dghcu5wjc03pd" path="res://Sences/top_ui.tscn" id="2_pqcn3"]
+[ext_resource type="PackedScene" uid="uid://c5irtedrqlq1y" path="res://Sences/bottom_ui.tscn" id="3_gunb3"]
+[ext_resource type="Script" path="res://Scipts/grid.gd" id="4_8ch78"]
+[ext_resource type="PackedScene" uid="uid://ba0yppsq4px84" path="res://Sences/hint_effect.tscn" id="5_3ndct"]
+[ext_resource type="Script" path="res://Scipts/ice_holder.gd" id="5_odi2x"]
+[ext_resource type="PackedScene" uid="uid://pbxxiu43j4jn" path="res://Sences/sinker.tscn" id="5_pbqnh"]
+[ext_resource type="Script" path="res://Scipts/lock_holder.gd" id="6_s85o4"]
+[ext_resource type="Script" path="res://Scipts/concrete_holder.gd" id="7_rljhx"]
+[ext_resource type="Script" path="res://Scipts/slime_holder.gd" id="8_p3auq"]
+[ext_resource type="PackedScene" uid="uid://dvkw027o8lv67" path="res://Sences/GameOver.tscn" id="9_q80b1"]
+[ext_resource type="Script" path="res://Scipts/GoalHolder.gd" id="11_hxh7i"]
+[ext_resource type="PackedScene" uid="uid://qh4jf0rxg0mf" path="res://Sences/goal.tscn" id="12_ou6ow"]
+[ext_resource type="Texture2D" uid="uid://c4qxd8t72ra6" path="res://art/Pieces/Blue Piece.png" id="13_6b1ui"]
+[ext_resource type="Texture2D" uid="uid://csmrowuegk8ml" path="res://art/Obstacles/Ice.png" id="14_tvntc"]
+[ext_resource type="PackedScene" uid="uid://dwdikaa4a2141" path="res://Sences/game_win.tscn" id="15_dr04q"]
+[ext_resource type="PackedScene" uid="uid://bjhkl4ktvf1hi" path="res://Sences/pause.tscn" id="16_rodkt"]
+
+[node name="game_window" type="Node2D"]
+
+[node name="background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_k2sba")
+
+[node name="top_ui" parent="." instance=ExtResource("2_pqcn3")]
+
+[node name="bottom_ui" parent="." instance=ExtResource("3_gunb3")]
+offset_top = 920.0
+offset_right = 576.0
+offset_bottom = 1012.0
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource("4_8ch78")
+width = 8
+height = 10
+x_start = 64
+y_start = 800
+offset = 64
+y_offset = 2
+ice_spaces = PackedVector2Array(0, 0, 0, 1, 1, 0, 3, 4, 3, 5, 4, 4, 4, 5, 6, 0, 7, 0, 7, 1, 0, 8, 0, 9, 1, 9, 6, 9, 7, 8, 7, 9)
+hint_effect = ExtResource("5_3ndct")
+sinker_piece = ExtResource("5_pbqnh")
+max_score = 5000
+piece_value = 10
+current_couter_value = 40
+is_moves = true
+
+[node name="Timer" type="Timer" parent="grid"]
+
+[node name="shuffle" type="Timer" parent="grid"]
+wait_time = 0.5
+
+[node name="hint" type="Timer" parent="grid"]
+wait_time = 7.0
+one_shot = true
+
+[node name="ice_holder" type="Node2D" parent="."]
+script = ExtResource("5_odi2x")
+value = "ice"
+
+[node name="lock_holder" type="Node2D" parent="."]
+script = ExtResource("6_s85o4")
+
+[node name="concrete_holder" type="Node2D" parent="."]
+script = ExtResource("7_rljhx")
+
+[node name="slime_holder" type="Node2D" parent="."]
+script = ExtResource("8_p3auq")
+
+[node name="destroy_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="collapse_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="refill_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="GameOver" parent="." instance=ExtResource("9_q80b1")]
+
+[node name="GoalHolder" type="Node" parent="."]
+script = ExtResource("11_hxh7i")
+
+[node name="goal" parent="GoalHolder" instance=ExtResource("12_ou6ow")]
+goal_texture = ExtResource("13_6b1ui")
+max_needed = 30
+goal_string = "blue"
+
+[node name="goal2" parent="GoalHolder" instance=ExtResource("12_ou6ow")]
+goal_texture = ExtResource("14_tvntc")
+max_needed = 16
+goal_string = "ice"
+
+[node name="GameWin" parent="." instance=ExtResource("15_dr04q")]
+
+[node name="Pause" parent="." instance=ExtResource("16_rodkt")]
+process_mode = 3
+offset = Vector2(576, 0)
+transform = Transform2D(1, 0, 0, 1, 576, 0)
+
+[connection signal="pause_game" from="bottom_ui" to="Pause" method="_on_bottom_ui_pause_game"]
+[connection signal="check_goal" from="grid" to="top_ui" method="_on_grid_check_goal"]
+[connection signal="check_goal" from="grid" to="GoalHolder" method="_on_grid_check_goal"]
+[connection signal="damage_concrete" from="grid" to="concrete_holder" method="_on_grid_damage_concrete"]
+[connection signal="damage_ice" from="grid" to="ice_holder" method="_on_grid_damage_ice"]
+[connection signal="damage_lock" from="grid" to="lock_holder" method="_on_grid_damage_lock"]
+[connection signal="damage_slime" from="grid" to="slime_holder" method="_on_grid_damage_slime"]
+[connection signal="game_over" from="grid" to="GameOver" method="_on_grid_game_over"]
+[connection signal="make_concrete" from="grid" to="concrete_holder" method="_on_grid_make_concrete"]
+[connection signal="make_ice" from="grid" to="ice_holder" method="_on_grid_make_ice"]
+[connection signal="make_lock" from="grid" to="lock_holder" method="_on_grid_make_lock"]
+[connection signal="make_slime" from="grid" to="slime_holder" method="_on_grid_make_slime"]
+[connection signal="setup_max_score" from="grid" to="top_ui" method="_on_grid_setup_max_score"]
+[connection signal="update_couter" from="grid" to="top_ui" method="_on_grid_update_couter"]
+[connection signal="update_score" from="grid" to="top_ui" method="_on_grid_update_score"]
+[connection signal="timeout" from="grid/Timer" to="grid" method="_on_timer_timeout"]
+[connection signal="timeout" from="grid/shuffle" to="grid" method="_on_shuffle_timeout"]
+[connection signal="timeout" from="grid/hint" to="grid" method="_on_hint_timeout"]
+[connection signal="break_ice" from="ice_holder" to="top_ui" method="_on_ice_holder_break_ice"]
+[connection signal="break_ice" from="ice_holder" to="GoalHolder" method="_on_ice_holder_break_ice"]
+[connection signal="remove_lock" from="lock_holder" to="grid" method="_on_lock_holder_remove_lock"]
+[connection signal="remove_crete" from="concrete_holder" to="grid" method="_on_concrete_holder_remove_crete"]
+[connection signal="remove_slime" from="slime_holder" to="grid" method="_on_slime_holder_remove_slime"]
+[connection signal="timeout" from="destroy_timer" to="grid" method="_on_destroy_timer_timeout"]
+[connection signal="timeout" from="collapse_timer" to="grid" method="_on_collapse_timer_timeout"]
+[connection signal="timeout" from="refill_timer" to="grid" method="_on_refill_timer_timeout"]
+[connection signal="create_goals" from="GoalHolder" to="top_ui" method="_on_goal_holder_create_goals"]
+[connection signal="game_won" from="GoalHolder" to="grid" method="_on_goal_holder_game_won"]
+[connection signal="game_won" from="GoalHolder" to="GameWin" method="_on_goal_holder_game_won"]

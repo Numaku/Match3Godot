@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://pbxxiu43j4jn"]
+
+[ext_resource type="PackedScene" uid="uid://sanf4rwlqe74" path="res://Sences/piece.tscn" id="1_w1lju"]
+[ext_resource type="Texture2D" uid="uid://vwh3ieng5o3v" path="res://art/Obstacles/Sinker v3.png" id="2_kh75c"]
+
+[node name="sinker" instance=ExtResource("1_w1lju")]
+color = "None"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_kh75c")

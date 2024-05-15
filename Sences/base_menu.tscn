@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv7xfkdt23c28"]
+
+[ext_resource type="Script" path="res://Scipts/base_menu.gd" id="1_bvlw1"]
+
+[sub_resource type="Animation" id="Animation_n130w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lu18x"]
+resource_name = "Slide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dqhwj"]
+resource_name = "slide_in_2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ui1vq"]
+_data = {
+"RESET": SubResource("Animation_n130w"),
+"slide_in": SubResource("Animation_lu18x"),
+"slide_in_2": SubResource("Animation_dqhwj")
+}
+
+[node name="BaseMenu" type="CanvasLayer"]
+offset = Vector2(576, 0)
+transform = Transform2D(1, 0, 0, 1, 576, 0)
+script = ExtResource("1_bvlw1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GraphicAndButton" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Graphic" type="TextureRect" parent="MarginContainer/GraphicAndButton"]
+layout_mode = 2
+
+[node name="Button" type="VBoxContainer" parent="MarginContainer/GraphicAndButton"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Btn1" type="TextureButton" parent="MarginContainer/GraphicAndButton/Button"]
+layout_mode = 2
+
+[node name="Btn2" type="TextureButton" parent="MarginContainer/GraphicAndButton/Button"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ui1vq")
+}

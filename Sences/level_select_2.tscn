@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://pp2hc4wyxm3u"]
+
+[ext_resource type="PackedScene" uid="uid://w1o5omeupwa3" path="res://Sences/level_select.tscn" id="1_ch5qq"]
+[ext_resource type="Texture2D" uid="uid://dsiatr715my0v" path="res://art/Level Select/Level Select 2.png" id="2_l2sci"]
+
+[node name="LevelSelect2" instance=ExtResource("1_ch5qq")]
+texture = ExtResource("2_l2sci")
+
+[node name="LevelNode" parent="." index="0"]
+position = Vector2(86, 199)
+enable = false
+
+[node name="LevelNode2" parent="." index="1"]
+position = Vector2(490, 192)
+
+[node name="LevelNode3" parent="." index="2"]
+position = Vector2(380, 483)
+
+[node name="LevelNode4" parent="." index="3"]
+position = Vector2(65, 743)
+
+[node name="LevelNode5" parent="." index="4"]
+position = Vector2(342, 875)
+
+[node name="LevelNode6" parent="." index="5"]
+position = Vector2(71, 1139)
+
+[node name="LevelNode7" parent="." index="6"]
+position = Vector2(459, 1066)
+
+[node name="LevelNode8" parent="." index="7"]
+position = Vector2(382, 1506)
+
+[node name="LevelNode9" parent="." index="8"]
+position = Vector2(89, 1564)
+
+[node name="LevelNode10" parent="." index="9"]
+position = Vector2(285, 1885)

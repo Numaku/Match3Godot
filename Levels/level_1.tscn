@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc7lnwcu2inpr"]
+
+[ext_resource type="PackedScene" uid="uid://b6f62k8x1ksc0" path="res://Sences/game_window.tscn" id="1_0jvuj"]
+
+[node name="level_1" instance=ExtResource("1_0jvuj")]
+
+[node name="grid" parent="." index="3"]
+width = 4
+height = 4
+ice_spaces = PackedVector2Array()
+current_couter_value = 5
+
+[node name="shuffle" parent="grid" index="1"]
+one_shot = true

@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://w1o5omeupwa3"]
+
+[ext_resource type="Texture2D" uid="uid://y4x3wytu1oxi" path="res://art/Level Select/Level Select Map 1.png" id="1_phsr5"]
+[ext_resource type="PackedScene" uid="uid://djs5wcuem0bqg" path="res://Sences/level_node.tscn" id="2_6fpu5"]
+[ext_resource type="Texture2D" uid="uid://b8wae7arllyd" path="res://art/Level Select/Green Button.png" id="7_6ura3"]
+
+[node name="LevelSelect" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 1026.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_phsr5")
+
+[node name="LevelNode" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(124, 335)
+level = 1
+enable = true
+
+[node name="LevelNode2" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(438, 79)
+level = 2
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode3" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(385, 464)
+level = 3
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode4" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(491, 652)
+level = 4
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode5" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(115, 829)
+level = 5
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode6" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(354, 1010)
+level = 6
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode7" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(134, 1278)
+level = 7
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode8" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(472, 1476)
+level = 8
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode9" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(100, 1681)
+level = 9
+open_texture = ExtResource("7_6ura3")
+
+[node name="LevelNode10" parent="." instance=ExtResource("2_6fpu5")]
+position = Vector2(466, 1858)
+level = 10
+open_texture = ExtResource("7_6ura3")

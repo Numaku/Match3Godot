@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkseppa723fad"]
+
+[ext_resource type="PackedScene" uid="uid://b0f53b6cvv7j8" path="res://Sences/ice.tscn" id="1_jbopx"]
+[ext_resource type="Texture2D" uid="uid://b7qucgunnwbbb" path="res://art/Obstacles/Locks.png" id="2_485vf"]
+
+[node name="licorice" instance=ExtResource("1_jbopx")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_485vf")

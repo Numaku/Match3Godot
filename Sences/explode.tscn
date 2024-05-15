@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmd14m7ggh0ms"]
+
+[ext_resource type="Script" path="res://Scipts/explode.gd" id="1_wyamt"]
+[ext_resource type="Texture2D" uid="uid://cj3jyjsrjdsog" path="res://Particles and effects/Explosion V2/explode_1_1.png" id="2_8lhcf"]
+[ext_resource type="Texture2D" uid="uid://dkuemvhvwhns4" path="res://Particles and effects/Explosion V2/explode_2_1.png" id="3_vnivo"]
+[ext_resource type="Texture2D" uid="uid://8ngn728su4c5" path="res://Particles and effects/Explosion V2/explode_3_1.png" id="4_r0iub"]
+[ext_resource type="Texture2D" uid="uid://bds02v77o3nav" path="res://Particles and effects/Explosion V2/explode_4_1.png" id="5_fnxs1"]
+[ext_resource type="Texture2D" uid="uid://d2ud625kv3wey" path="res://Particles and effects/Explosion V2/explode_5_1.png" id="6_wmuuq"]
+[ext_resource type="Texture2D" uid="uid://da0i23bj2c3x" path="res://Particles and effects/Explosion V2/explode_6_1.png" id="7_4dxsq"]
+[ext_resource type="Texture2D" uid="uid://dods8fqucj6f5" path="res://Particles and effects/Explosion V2/explode_7.png" id="8_n5qms"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_er8rw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8lhcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vnivo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r0iub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fnxs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wmuuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wmuuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4dxsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4dxsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n5qms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n5qms")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 16.0
+}]
+
+[node name="explode" type="Node2D"]
+script = ExtResource("1_wyamt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_er8rw")
+animation = &"explode"
+frame = 9
+frame_progress = 1.0
+speed_scale = 0.75
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

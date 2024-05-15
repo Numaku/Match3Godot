@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhhstedxv22m2"]
+
+[ext_resource type="Script" path="res://Scipts/GameMenu.gd" id="1_05fge"]
+[ext_resource type="PackedScene" uid="uid://f6g1yq7g8ult" path="res://Sences/MainMenuPanel.tscn" id="1_rdymh"]
+[ext_resource type="PackedScene" uid="uid://bufqrhx2wo8is" path="res://Sences/Setting.tscn" id="2_ghaum"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05fge")
+
+[node name="Setting" parent="." instance=ExtResource("2_ghaum")]
+
+[node name="Main" parent="." instance=ExtResource("1_rdymh")]
+
+[connection signal="back_button" from="Setting" to="." method="_on_setting_back_button"]
+[connection signal="play_pressed" from="Main" to="." method="_on_main_play_pressed"]
+[connection signal="settings_pressed" from="Main" to="." method="_on_main_settings_pressed"]

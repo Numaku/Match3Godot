@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvkw027o8lv67"]
+
+[ext_resource type="Script" path="res://Scipts/GameOverPanel.gd" id="1_3s8p2"]
+[ext_resource type="Texture2D" uid="uid://l0mxk6iutf64" path="res://art/GameOver Background.png" id="2_wy0xc"]
+[ext_resource type="Texture2D" uid="uid://b4fl1xj2e7qk7" path="res://art/Buttons/Quit Button.png" id="3_1cqyk"]
+[ext_resource type="Texture2D" uid="uid://0lls8ko0wlvu" path="res://art/Buttons/Restart Button.png" id="4_015aa"]
+[ext_resource type="Animation" uid="uid://btqlw0v8cyp76" path="res://animation/slide_in.res" id="5_c30m0"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k225"]
+_data = {
+"slide_in": ExtResource("5_c30m0")
+}
+
+[node name="GameOver" type="CanvasLayer"]
+offset = Vector2(576, 0)
+transform = Transform2D(1, 0, 0, 1, 576, 0)
+script = ExtResource("1_3s8p2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 384
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 128
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_wy0xc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 233.0
+offset_right = -33.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Quit" type="TextureButton" parent="MarginContainer/TextureRect2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_1cqyk")
+
+[node name="Restart" type="TextureButton" parent="MarginContainer/TextureRect2/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_015aa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4k225")
+}
+
+[connection signal="pressed" from="MarginContainer/TextureRect2/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/TextureRect2/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://sanf4rwlqe74"]
+
+[ext_resource type="Script" path="res://Scipts/piece.gd" id="1_705o0"]
+[ext_resource type="Texture2D" uid="uid://dohnr6d5oepx2" path="res://art/Pieces/Rainbow.png" id="2_ejj8h"]
+
+[node name="piece" type="Node2D"]
+script = ExtResource("1_705o0")
+color_bomb_texture = ExtResource("2_ejj8h")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)

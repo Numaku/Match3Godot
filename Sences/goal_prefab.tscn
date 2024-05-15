@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcxnk6o3rwoni"]
+
+[ext_resource type="Texture2D" uid="uid://dpqcudbr8c62a" path="res://art/goal background.png" id="1_hjueq"]
+[ext_resource type="Script" path="res://Scipts/goal_prefab.gd" id="2_cl1nl"]
+[ext_resource type="Texture2D" uid="uid://c4qxd8t72ra6" path="res://art/Pieces/Blue Piece.png" id="2_gbww7"]
+[ext_resource type="FontFile" uid="uid://bir3m8qm08430" path="res://Fonts/Kenney Mini Square.ttf" id="3_jy11t"]
+
+[node name="GoalPrefab" type="TextureRect"]
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 61.0
+texture = ExtResource("1_hjueq")
+script = ExtResource("2_cl1nl")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_gbww7")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_jy11t")
+theme_override_font_sizes/font_size = 12
+text = "0/5"
+horizontal_alignment = 1

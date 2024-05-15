@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgkb34ik58ohm"]
+
+[ext_resource type="PackedScene" uid="uid://sanf4rwlqe74" path="res://Sences/piece.tscn" id="1_wqcca"]
+[ext_resource type="Texture2D" uid="uid://b3akhmv3ltpxx" path="res://art/Pieces/Orange Row.png" id="2_8tgo1"]
+[ext_resource type="Texture2D" uid="uid://cxb8jyryv6nea" path="res://art/Pieces/Orange Piece.png" id="2_e8joh"]
+[ext_resource type="Texture2D" uid="uid://dr6yp8amae63p" path="res://art/Pieces/Orange Column.png" id="3_35icd"]
+[ext_resource type="Texture2D" uid="uid://8j22flqba2kg" path="res://art/Pieces/Orange Adjacent.png" id="4_jlcup"]
+
+[node name="orange_piece" instance=ExtResource("1_wqcca")]
+color = "orange"
+row_texture = ExtResource("2_8tgo1")
+column_texture = ExtResource("3_35icd")
+adjacent_texture = ExtResource("4_jlcup")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_e8joh")

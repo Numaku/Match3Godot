@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5irtedrqlq1y"]
+
+[ext_resource type="Texture2D" uid="uid://byhcro2dtif4v" path="res://art/Bottom UI v 2.png" id="1_6sbcu"]
+[ext_resource type="Texture2D" uid="uid://dgx8hurla6pb4" path="res://art/Buttons/Pause Button.png" id="2_ecbfb"]
+[ext_resource type="Script" path="res://Scipts/bottom_ui.gd" id="2_n502e"]
+[ext_resource type="Texture2D" uid="uid://csl8cvbb5sfoh" path="res://art/Buttons/Make Color Bomb Button.png" id="3_yncko"]
+[ext_resource type="Texture2D" uid="uid://5t5muainjg8h" path="res://art/Buttons/Mallet Button.png" id="4_cqrso"]
+[ext_resource type="Texture2D" uid="uid://ca614j4lkenm3" path="res://art/Buttons/Plus Ten Seconds Button.png" id="5_edo2p"]
+
+[node name="bottom_ui" type="TextureRect"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1924.0
+offset_bottom = -1832.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(41, 4)
+texture = ExtResource("1_6sbcu")
+script = ExtResource("2_n502e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -10.0
+offset_right = 126.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+theme_override_constants/margin_top = -50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture_normal = ExtResource("2_ecbfb")
+
+[node name="Booters1" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_yncko")
+
+[node name="Booters2" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_cqrso")
+
+[node name="Booters3" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_edo2p")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

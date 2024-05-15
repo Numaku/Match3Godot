@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0n56fv2q3t8r"]
+
+[ext_resource type="Texture2D" uid="uid://cdshoqf7ugsrt" path="res://Particles and effects/Star Particle.png" id="1_0now8"]
+[ext_resource type="Script" path="res://Scipts/DestroyParticle.gd" id="2_pesrv"]
+
+[sub_resource type="Gradient" id="Gradient_u2ktg"]
+offsets = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.843137, 1, 1, 1, 0.470588)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r0mho"]
+gradient = SubResource("Gradient_u2ktg")
+
+[sub_resource type="Curve" id="Curve_6rgj1"]
+_data = [Vector2(0, 0.263158), 0.0, 0.0, 0, 0, Vector2(0.253012, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ot1h"]
+curve = SubResource("Curve_6rgj1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fspjg"]
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 1)
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 50, 0)
+initial_velocity_min = 25.42
+initial_velocity_max = 25.42
+angular_velocity_min = 90.0
+angular_velocity_max = 90.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_0ot1h")
+color_ramp = SubResource("GradientTexture1D_r0mho")
+
+[node name="ParticleEffect" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_fspjg")
+texture = ExtResource("1_0now8")
+lifetime = 0.3
+one_shot = true
+script = ExtResource("2_pesrv")
+
+[node name="Timer" type="Timer" parent="GPUParticles2D"]
+
+[connection signal="timeout" from="GPUParticles2D/Timer" to="GPUParticles2D" method="_on_timer_timeout"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba0yppsq4px84"]
+
+[ext_resource type="Script" path="res://Scipts/HintEffect.gd" id="1_8jn03"]
+[ext_resource type="Texture2D" uid="uid://fhgdgawyqtha" path="res://art/Pieces/Green Piece.png" id="2_3g0r3"]
+
+[node name="HintEffect" type="Node2D"]
+script = ExtResource("1_8jn03")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3g0r3")

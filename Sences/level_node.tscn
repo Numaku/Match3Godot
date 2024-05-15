@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://djs5wcuem0bqg"]
+
+[ext_resource type="Script" path="res://Scipts/level_node.gd" id="1_lsqpv"]
+[ext_resource type="Texture2D" uid="uid://cdogvpd4mmd2b" path="res://art/Level Select/Red Button.png" id="1_o86ne"]
+[ext_resource type="FontFile" uid="uid://djc0i275rx0vj" path="res://Fonts/Kenney Blocks.ttf" id="2_6j58w"]
+[ext_resource type="Texture2D" uid="uid://6i55o4mxp538" path="res://art/Level Select/Star Blank.png" id="3_8y8p1"]
+[ext_resource type="Texture2D" uid="uid://bt1uk555dvnas" path="res://art/Level Select/Green Button 2.png" id="3_g33km"]
+[ext_resource type="Texture2D" uid="uid://fqr7t27if71" path="res://art/Level Select/Star Filled.png" id="4_5im47"]
+
+[node name="LevelNode" type="Node2D"]
+script = ExtResource("1_lsqpv")
+level_to_load = "res://Levels/level_1.tscn"
+blocked_texture = ExtResource("1_o86ne")
+open_texture = ExtResource("3_g33km")
+goal_met = ExtResource("4_5im47")
+goal_not_met = ExtResource("3_8y8p1")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture_normal = ExtResource("1_o86ne")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 11.0
+offset_right = 81.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("2_6j58w")
+theme_override_font_sizes/font_size = 40
+text = "01"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="star1" type="Sprite2D" parent="."]
+position = Vector2(0, 77)
+texture = ExtResource("3_8y8p1")
+
+[node name="star2" type="Sprite2D" parent="."]
+position = Vector2(-55, 59)
+texture = ExtResource("3_8y8p1")
+
+[node name="star3" type="Sprite2D" parent="."]
+position = Vector2(53, 60)
+texture = ExtResource("3_8y8p1")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

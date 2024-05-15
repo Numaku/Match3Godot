@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwdikaa4a2141"]
+
+[ext_resource type="Script" path="res://Scipts/game_win.gd" id="1_6085k"]
+[ext_resource type="Texture2D" uid="uid://d3cr1542nur4y" path="res://Panels/Win Panel.png" id="1_sosiq"]
+[ext_resource type="FontFile" uid="uid://djc0i275rx0vj" path="res://Fonts/Kenney Blocks.ttf" id="2_bjyfb"]
+[ext_resource type="Texture2D" uid="uid://brfvxr2c6tfor" path="res://art/Buttons/Continue Button Game Win.png" id="3_jlc2d"]
+[ext_resource type="Animation" uid="uid://btqlw0v8cyp76" path="res://animation/slide_in.res" id="5_fq00v"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7qpu"]
+_data = {
+"slide_in": ExtResource("5_fq00v")
+}
+
+[node name="GameWin" type="CanvasLayer"]
+offset = Vector2(576, 0)
+transform = Transform2D(1, 0, 0, 1, 576, 0)
+script = ExtResource("1_6085k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 592.0
+offset_bottom = 848.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_sosiq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 286.0
+offset_right = 393.0
+offset_bottom = 566.0
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_bjyfb")
+theme_override_font_sizes/font_size = 70
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="TextureButton" parent="MarginContainer/TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_jlc2d")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c7qpu")
+}
+
+[connection signal="pressed" from="MarginContainer/TextureRect/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

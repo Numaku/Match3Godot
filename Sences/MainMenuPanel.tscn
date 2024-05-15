@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://f6g1yq7g8ult"]
+
+[ext_resource type="PackedScene" uid="uid://dv7xfkdt23c28" path="res://Sences/base_menu.tscn" id="1_a7mdi"]
+[ext_resource type="Texture2D" uid="uid://dgy056nsnignm" path="res://art/godot match 3 logo.png" id="2_0kb1n"]
+[ext_resource type="Script" path="res://Scipts/MainMenuPanel.gd" id="2_oa5is"]
+[ext_resource type="Texture2D" uid="uid://c6cxd4tic635x" path="res://art/Buttons/Play Button.png" id="3_v682i"]
+[ext_resource type="Texture2D" uid="uid://bsxbgn6bu5t6" path="res://art/Buttons/Settings Button.png" id="4_l74b3"]
+
+[node name="Main" instance=ExtResource("1_a7mdi")]
+script = ExtResource("2_oa5is")
+
+[node name="Graphic" parent="MarginContainer/GraphicAndButton" index="0"]
+custom_minimum_size = Vector2(488, 488)
+texture = ExtResource("2_0kb1n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Btn1" parent="MarginContainer/GraphicAndButton/Button" index="0"]
+custom_minimum_size = Vector2(512, 256)
+texture_normal = ExtResource("3_v682i")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Btn2" parent="MarginContainer/GraphicAndButton/Button" index="1"]
+custom_minimum_size = Vector2(512, 128)
+texture_normal = ExtResource("4_l74b3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/GraphicAndButton/Button/Btn1" to="." method="_on_btn_1_pressed"]
+[connection signal="pressed" from="MarginContainer/GraphicAndButton/Button/Btn2" to="." method="_on_btn_2_pressed"]
